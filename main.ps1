@@ -8,7 +8,7 @@ $gamePath = [System.IO.Path]::GetDirectoryName((New-Object System.Windows.Forms.
 }).ShowDialog())
 
 # Set best launch options for CSGO
-$launchOptions = "-novid -tickrate 128 -nojoy -nod3d9ex1 +mat_queue_mode 2 +cl_forcepreload 1 -novid -nojoy -nopreload -full +mat_disable_fancy_blending 1 +fps_max 0 +cl_forcepreload 1 -nojoy -softparticlesdefaultoff -nohltv +violence_hblood 0 +r_dynamic 1 -no-browser -limitvs-high -threads $(Get-WmiObject Win32_Processor | select MaxClockSpeed).0 -refresh 144"
+$launchOptions = "-novid -tickrate 128 -nojoy -nod3d9ex1 +mat_queue_mode 2 +cl_forcepreload 1 -novid -nojoy -nopreload -full +mat_disable_fancy_blending 1 +fps_max 0 +cl_forcepreload 1 -nojoy -softparticlesdefaultoff -nohltv +violence_hblood 0 +r_dynamic 1 -no-browser -limitvs-high -threads $(Get-WmiObject Win32_Processor | select MaxClockSpeed).0"
 
 # Prompt user for refresh rate
 $refreshRate = Read-Host "Enter your preferred refresh rate (default: 144)"
