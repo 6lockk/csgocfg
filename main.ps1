@@ -30,9 +30,10 @@ if ($dialogResult -eq [System.Windows.Forms.DialogResult]::OK) {
         $startInfo.Arguments = $launchOptions
         $startInfo.UseShellExecute = $false
         [System.Diagnostics.Process]::Start($startInfo) | Out-Null
-        Write-Host "Setting Process priority to High."
+        Write-Host "Attempting To Set CS:GO To High Priority."
     }
 }
 else {
-    Write-Host "csgo.exe is not running."
+    Write-Host "csgo.exe not found."
 }
+
