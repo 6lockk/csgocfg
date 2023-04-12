@@ -30,7 +30,7 @@ if ($dialogResult -eq [System.Windows.Forms.DialogResult]::OK) {
         $startInfo.Arguments = $launchOptions
         $startInfo.UseShellExecute = $false
         [System.Diagnostics.Process]::Start($startInfo) | Out-Null
-        Write-Host "CS:GO launched with launch options and process priority set to High."
+        Write-Host "Setting Process priority to High."
     }
 }
 else {
