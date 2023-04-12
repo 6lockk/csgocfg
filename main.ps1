@@ -1,17 +1,23 @@
 $refreshRate = Read-Host "Please enter your monitor's refresh rate:"
-$csgoPath = Read-Host "Please enter the full path to your CS:GO installation folder:"
 
 $launchOptions = "-novid -tickrate 128 +mat_queue_mode 2 +cl_forcepreload 1 -novid -nojoy -nopreload -full +mat_disable_fancy_blending 1 +fps_max 0 +cl_forcepreload 1 -nojoy -softparticlesdefaultoff -nohltv +violence_hblood 0 +r_dynamic 1 -no-browser -limitvs -freq $refreshRate"
 
 Set-Clipboard $launchOptions
 
-Write-Host "Launch options copied to clipboard, open steam, navigate to library. Right click on csgo and go to properties. Paste the following options"
+Write-Host "Launch options copied to clipboard."
 
-$processName = "csgo"
-$processPath = "$csgoPath\csgo.exe"
+$csgoExe = [System.Windows.Forms.OpenFileDialog]::new()
+$csgoExe.Title = "Select the csgo.exe file"
+$csgoExe.Filter = "Executable files (*.exe)|*.exe"
+$csgoExe.Multiselect = $false
+$csgoExe.InitialDirectory = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::ProgramFilesX86)
+$dialogResult = $csgoExe.ShowDialog()
 
-if (Test-Path $processPath) {
-    Write-Host "CS:GO found at $processPath. Setting process priority to high."
+if ($dialogResult -eq [System.Windows.Forms.DialogResult]::OK) {
+    $processPath = $csgoExe.FileName
+
+    Write-Host "csgo.exe found at $processPath. Setting process priority to high."
+    $processName = "csgo"
     $process = Get-Process -Name $processName -ErrorAction SilentlyContinue
     if ($process) {
         $process.PriorityClass = [System.Diagnostics.ProcessPriorityClass]::High
@@ -22,5 +28,5 @@ if (Test-Path $processPath) {
     }
 }
 else {
-    Write-Host "CS:GO not found at $processPath."
+    Write-Host "csgo.exe not found."
 }
