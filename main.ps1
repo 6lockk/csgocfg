@@ -3,8 +3,6 @@ $csgoPath = Read-Host "Please enter the full path to your CS:GO installation fol
 
 $launchOptions = "-novid -tickrate 128 +mat_queue_mode 2 +cl_forcepreload 1 -novid -nojoy -nopreload -full +mat_disable_fancy_blending 1 +fps_max 0 +cl_forcepreload 1 -nojoy -softparticlesdefaultoff -nohltv +violence_hblood 0 +r_dynamic 1 -no-browser -limitvs -freq $refreshRate"
 
-Write-Host "Launch options with your refresh rate included:`n$launchOptions"
-
 Set-Clipboard $launchOptions
 
 Write-Host "Launch options copied to clipboard, open steam, navigate to library. Right click on csgo and go to properties. Paste the following options"
