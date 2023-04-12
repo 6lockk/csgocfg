@@ -7,7 +7,7 @@ Write-Host "Launch options with your refresh rate included:`n$launchOptions"
 
 Set-Clipboard $launchOptions
 
-Write-Host "Launch options copied to clipboard."
+Write-Host "Launch options copied to clipboard, open steam, navigate to library. Right click on csgo and go to properties. Paste the following options"
 
 $processName = "csgo"
 $processPath = "$csgoPath\csgo.exe"
