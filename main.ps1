@@ -34,6 +34,6 @@ if ($dialogResult -eq [System.Windows.Forms.DialogResult]::OK) {
     }
 }
 else {
-    Write-Host "csgo.exe not found."
+    Write-Host "csgo.exe is not running."
 }
 
